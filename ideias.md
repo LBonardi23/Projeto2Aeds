@@ -18,7 +18,8 @@
 srand((unsigned)time(NULL)); // código srand é utilizando como uma "semente" que possibilita a geração de número aleatórios todas as vezes que eu gerar random(num)
 x = rand() % 100; // eu faço com que a variavel "x" receba a sua um valor aleatório entre 1 e 100, posso definir o tamanho 100, 1000, 10000
 
-// Processo de criação
+# Processo de criação
+
 1)Gerar vetores com numeros aleatórios
 2)utilizar o insert, bubble, selection em algoritmos que estejam crescentes, aleatórios (fazer vários com essa e pegar uma média) e descrescente.
 3)Após realizar todas as operações, criar um gráfico a partir dos resultados e verificar qual possui maiores vantagens em relações a outras.
