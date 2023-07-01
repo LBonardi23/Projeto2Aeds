@@ -1,8 +1,22 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 
 using namespace std;
+
+bool comparaDecrescente(int a, int b) {
+    return a > b;
+}
+
+bool numeroJaGerado(int* vetor, int tamanho, int numero) {
+    for (int i = 0; i < tamanho; i++) {
+        if (vetor[i] == numero) {
+            return true;
+        }
+    }
+    return false;
+}
 
 int main()
 {
@@ -44,8 +58,13 @@ int main()
     cout << endl;
     
     int vetor[n];
-    for (int i = 0; i < n; i++){
-        vetor[i] = rand();
+    for (int i = 0; i < n; i++) {
+        int numero;
+        do {
+            numero = rand() % n + 1;
+        } while (numeroJaGerado(vetor, i, numero));
+
+        vetor[i] = numero;
     }
 
     int opcaotipo;
@@ -60,17 +79,16 @@ int main()
     switch (opcaotipo) {
         case 1:
             cout << "Crescente selecionado." << endl;
-            // Realize as operações correspondentes à Opcao 1
+            sort(vetor, vetor + n);
             break;
 
         case 2:
             cout << "Aleatório selecionado." << endl;
-            // Realize as operações correspondentes à Opcao 2
             break;
 
         case 3:
             cout << "Decrescente selecionado." << endl;
-            // Realize as operações correspondentes à Opcao 3
+            sort(vetor, vetor + k, comparaDecrescente);
             break;
 
         default:
@@ -78,11 +96,6 @@ int main()
             break;
     }
     cout << endl;
-    // // Mostrando o vetor original
-    // cout << "Vetor Original: ";
-    // for (int i = 0; i < k ;i++){
-    //     cout << vetor[i] << " ";
-    // }
 
     int opcaoOrdenacao;
 
@@ -144,6 +157,7 @@ int main()
 
     cout << endl;
     cout << "Dados gerados com sucesso: " << endl;
+
     // Mostrando o vetor ordenado 
     // cout << endl << "Vetor ordenado: ";
     // for (int i = 0; i < k; i++) {
