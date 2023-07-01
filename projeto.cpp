@@ -5,10 +5,12 @@
 
 using namespace std;
 
+// função que retorna um valor booleano para criar o vetor de maneira decrescente
 bool comparaDecrescente(int a, int b) {
     return a > b;
 }
 
+// função que retorna valores booleanos para verificar se o numero aleatório gerado já existe no vetor
 bool numeroJaGerado(int* vetor, int tamanho, int numero) {
     for (int i = 0; i < tamanho; i++) {
         if (vetor[i] == numero) {
@@ -23,6 +25,15 @@ int main()
     int k;
     int n;
     int opcaotam;
+    int x0 = 0;
+    int x1 = 0;
+    int x2 = 0;
+    int y0 = 0;
+    int y1 = 0;
+    int y2 = 0;
+    int z0 = 0;
+    int z1 = 0;
+    int z2 = 0;
     srand(time(0));
 
     cout << "Selecione um tamanho para o vetor: " << endl;
@@ -57,113 +68,225 @@ int main()
     }
     cout << endl;
     
+    // Gerando um vetor aleatório sem repetir números
     int vetor[n];
+    int vetorReset[n];
     for (int i = 0; i < n; i++) {
         int numero;
         do {
-            numero = rand() % n + 1;
+            numero = rand() % 1000000;
         } while (numeroJaGerado(vetor, i, numero));
 
         vetor[i] = numero;
+        vetorReset[i] = numero;
     }
-
-    int opcaotipo;
-
-    cout << "Selecione como você quer deixar o vetor: " << endl;
-    cout << "1. Crescente" << endl;
-    cout << "2. Aleatório" << endl;
-    cout << "3. Decrescente" << endl;
-    cout << "Digite o numero da opcao desejada: ";
-    cin >> opcaotipo;
-
-    switch (opcaotipo) {
-        case 1:
-            cout << "Crescente selecionado." << endl;
-            sort(vetor, vetor + n);
-            break;
-
-        case 2:
-            cout << "Aleatório selecionado." << endl;
-            break;
-
-        case 3:
-            cout << "Decrescente selecionado." << endl;
-            sort(vetor, vetor + k, comparaDecrescente);
-            break;
-
-        default:
-            cout << "Forma de ordenação inválida" << endl;
-            break;
+    cout << endl;
+    cout << "Vetor: ";
+    for (int i = 0; i < k; i++) {
+        cout << vetor[i] << " ";
     }
     cout << endl;
 
-    int opcaoOrdenacao;
+    // Coletando os dados do vetor na forma aleatória
 
-    cout << "Selecione uma opcao: " << endl;
-    cout << "1. Insert Sort" << endl;
-    cout << "2. Selection Sort" << endl;
-    cout << "3. Bubble Sort" << endl;
-    cout << "Digite o numero da opção desejada: ";
-    cin >> opcaoOrdenacao;
-
-    switch (opcaoOrdenacao) { // Insertion Sort
-        case 1:
-            cout << "Insert Sort selecionado." << endl;
-            for (int i = 1; i < k; i++){
-                int key = vetor[i];
-                int j = i - 1;
-
-                while (j >= 0 && vetor[j] > key) {
-                    vetor[j + 1] = vetor[j];
-                    j--;
-                }
-                vetor[j + 1] = key;
+    // INSERT SORT
+    for (int i = 0; i <= 5; i++)
+    {
+        for (int i = 1; i < k; i++){
+            int key = vetor[i];
+            int j = i - 1;
+            x1 ++;
+            while (j >= 0 && vetor[j] > key) {
+                vetor[j + 1] = vetor[j];
+                j--;
+                x1 ++;
             }
-            break;
-
-        case 2:
-            cout << "Selection Sort selecionado." << endl;
-            for (int i = 0; i < k - 1; i++){
-                int keym = i;
-                for (int j = i + 1; j < k; j++){
-                    if (vetor[j] < vetor[keym]){
-                        keym = j;
-                    }
-                }
-                int temp = vetor[keym];
-                vetor[keym] = vetor[i];
-                vetor[i] = temp;
+            vetor[j + 1] = key;
+        }
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+    
+    // SELECTION SORT
+    for (int i = 0; i < k - 1; i++){
+        int keym = i;
+        y1 ++;
+        for (int j = i + 1; j < k; j++){
+            if (vetor[j] < vetor[keym]){
+                keym = j;
+                y1 ++;
             }
-            break;
-
-        case 3:
-            cout << "Bubble Sort selecionado." << endl;
-            for(int i = 0; i < k - 1; i++){
-                for (int j = 0; j < k - 1; j++)
-                {
-                    if (vetor[j] > vetor[j + 1]){
-                        int temp = vetor[j];
-                        vetor[j] = vetor[j + 1];
-                        vetor[j + 1] = temp;
-                    }
-                }
-            }
-            break;
-
-        default:
-            cout << "Método de Ordenação inválida!" << endl;
-            break;
+        }
+        int temp = vetor[keym];
+        vetor[keym] = vetor[i];
+        vetor[i] = temp;
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
     }
 
+    // BUBBLE SORT
+    for(int i = 0; i < k - 1; i++){
+        for (int j = 0; j < k - 1; j++)
+        {
+            z1++;
+            if (vetor[j] > vetor[j + 1]){
+                int temp = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = temp;
+                z1++;
+            }
+        }
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+
+    // Colocando o vetor crescente
+    sort(vetor, vetor + n);
+    sort(vetorReset, vetorReset + n);
+
     cout << endl;
+    cout << "Vetor: ";
+    for (int i = 0; i < k; i++) {
+        cout << vetor[i] << " ";
+    }
+    cout << endl;
+    // Coletando os dados do vetor na forma Crescente
+
+    // INSERT SORT
+    for (int i = 0; i <= 5; i++)
+    {
+        for (int i = 1; i < k; i++){
+            int key = vetor[i];
+            int j = i - 1;
+            x0 ++;
+            while (j >= 0 && vetor[j] > key) {
+                vetor[j + 1] = vetor[j];
+                j--;
+                x0 ++;
+            }
+            vetor[j + 1] = key;
+        }
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+    
+    // SELECTION SORT
+    for (int i = 0; i < k - 1; i++){
+        int keym = i;
+        y0 ++;
+        for (int j = i + 1; j < k; j++){
+            if (vetor[j] < vetor[keym]){
+                keym = j;
+                y0 ++;
+            }
+        }
+        int temp = vetor[keym];
+        vetor[keym] = vetor[i];
+        vetor[i] = temp;
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+
+    // BUBBLE SORT
+    for(int i = 0; i < k - 1; i++){
+        for (int j = 0; j < k - 1; j++)
+        {
+            z0++;
+            if (vetor[j] > vetor[j + 1]){
+                int temp = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = temp;
+                z0++;
+            }
+        }
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+
+    // Colocando o vetor de forma descrescente
+    sort(vetor, vetor + k, comparaDecrescente);
+    sort(vetorReset, vetorReset + k, comparaDecrescente);
+
+    cout << endl;
+    cout << "Vetor: ";
+    for (int i = 0; i < k; i++) {
+        cout << vetor[i] << " ";
+    }
+    cout << endl;
+    // Coletando os dados do vetor na forma Decrescente
+
+    // INSERT SORT
+    for (int i = 0; i <= 5; i++)
+    {
+        for (int i = 1; i < k; i++){
+            int key = vetor[i];
+            int j = i - 1;
+            x2 ++;
+            while (j >= 0 && vetor[j] > key) {
+                vetor[j + 1] = vetor[j];
+                j--;
+                x2 ++;
+            }
+            vetor[j + 1] = key;
+        }
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+    
+    // SELECTION SORT
+    for (int i = 0; i < k - 1; i++){
+        int keym = i;
+        y2 ++;
+        for (int j = i + 1; j < k; j++){
+            if (vetor[j] < vetor[keym]){
+                keym = j;
+                y2 ++;
+            }
+        }
+        int temp = vetor[keym];
+        vetor[keym] = vetor[i];
+        vetor[i] = temp;
+    }
+    // Resetando o vetor
+    for (int i = 0; i < n; i++) {
+        vetor[i] = vetorReset[i];
+    }
+
+    // BUBBLE SORT
+    for(int i = 0; i < k - 1; i++){
+        for (int j = 0; j < k - 1; j++)
+        {
+            z2++;
+            if (vetor[j] > vetor[j + 1]){
+                int temp = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = temp;
+                z2++;
+            }
+        }
+    }
+
     cout << "Dados gerados com sucesso: " << endl;
+    cout << "INSERT SORT" << endl << "Na forma descrescente: " << x0 << " repetições." << endl << "Na forma aleatória: " << x1 << " repetições." << endl << "Na forma decrescente: " << x2 << " repetições." << endl << endl;
 
-    // Mostrando o vetor ordenado 
-    // cout << endl << "Vetor ordenado: ";
-    // for (int i = 0; i < k; i++) {
-    //     cout << vetor[i] << " ";
-    // }
-    // cout << endl;
+    cout << "SELECTION SORT" << endl << "Na forma descrescente: " << y0 << " repetições." << endl << "Na forma aleatória: " << y1 << " repetições." << endl << "Na forma decrescente: " << y2 << " repetições." << endl << endl;
 
+    cout << "BUBBLE SORT" << endl << "Na forma descrescente: " << z0 << " repetições." << endl << "Na forma aleatória: " << z1 << " repetições." << endl << "Na forma decrescente: " << z2 << " repetições." << endl << endl;
+
+    cout << "Graficos gerados com sucesso!" << endl;
     return 0;
 }
