@@ -281,11 +281,11 @@ int main()
     }
 
     cout << "Dados gerados com sucesso: " << endl;
-    cout << "INSERT SORT" << endl << "Na forma descrescente: " << x0 << " repetições." << endl << "Na forma aleatória: " << x1 << " repetições." << endl << "Na forma decrescente: " << x2 << " repetições." << endl << endl;
+    cout << "INSERT SORT" << endl << "Na forma crescente: " << x0 << " repetições." << endl << "Na forma aleatória: " << x1 << " repetições." << endl << "Na forma decrescente: " << x2 << " repetições." << endl << endl;
 
-    cout << "SELECTION SORT" << endl << "Na forma descrescente: " << y0 << " repetições." << endl << "Na forma aleatória: " << y1 << " repetições." << endl << "Na forma decrescente: " << y2 << " repetições." << endl << endl;
+    cout << "SELECTION SORT" << endl << "Na forma crescente: " << y0 << " repetições." << endl << "Na forma aleatória: " << y1 << " repetições." << endl << "Na forma decrescente: " << y2 << " repetições." << endl << endl;
 
-    cout << "BUBBLE SORT" << endl << "Na forma descrescente: " << z0 << " repetições." << endl << "Na forma aleatória: " << z1 << " repetições." << endl << "Na forma decrescente: " << z2 << " repetições." << endl << endl;
+    cout << "BUBBLE SORT" << endl << "Na forma crescente: " << z0 << " repetições." << endl << "Na forma aleatória: " << z1 << " repetições." << endl << "Na forma decrescente: " << z2 << " repetições." << endl << endl;
 
     cout << "Graficos gerados com sucesso!" << endl;
     return 0;
