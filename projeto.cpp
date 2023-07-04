@@ -99,9 +99,10 @@ int main()
             while (j >= 0 && vetor[j] > key) {
                 vetor[j + 1] = vetor[j];
                 j--;
-                x1 ++;
+                x1 = x1 + 3;
             }
             vetor[j + 1] = key;
+            x1 ++;
         }
     }
     // Resetando o vetor
@@ -112,16 +113,16 @@ int main()
     // SELECTION SORT
     for (int i = 0; i < k - 1; i++){
         int keym = i;
-        y1 ++;
         for (int j = i + 1; j < k; j++){
             if (vetor[j] < vetor[keym]){
                 keym = j;
-                y1 ++;
+                y1 = y1 + 2;
             }
         }
         int temp = vetor[keym];
         vetor[keym] = vetor[i];
         vetor[i] = temp;
+        y1 = y1 + 4;
     }
     // Resetando o vetor
     for (int i = 0; i < n; i++) {
@@ -132,13 +133,13 @@ int main()
     for(int i = 0; i < k - 1; i++){
         for (int j = 0; j < k - 1; j++)
         {
-            z1++;
             if (vetor[j] > vetor[j + 1]){
                 int temp = vetor[j];
                 vetor[j] = vetor[j + 1];
                 vetor[j + 1] = temp;
-                z1++;
+                z1 = z1 + 4;
             }
+            z1 = z1 + 2;
         }
     }
     // Resetando o vetor
@@ -168,9 +169,10 @@ int main()
             while (j >= 0 && vetor[j] > key) {
                 vetor[j + 1] = vetor[j];
                 j--;
-                x0 ++;
+                x0 = x0 + 3;
             }
             vetor[j + 1] = key;
+            x0++;
         }
     }
     // Resetando o vetor
@@ -181,16 +183,16 @@ int main()
     // SELECTION SORT
     for (int i = 0; i < k - 1; i++){
         int keym = i;
-        y0 ++;
         for (int j = i + 1; j < k; j++){
             if (vetor[j] < vetor[keym]){
                 keym = j;
-                y0 ++;
             }
+            y0 = y0 + 2;
         }
         int temp = vetor[keym];
         vetor[keym] = vetor[i];
         vetor[i] = temp;
+        y0 = y0 + 4;
     }
     // Resetando o vetor
     for (int i = 0; i < n; i++) {
@@ -201,13 +203,13 @@ int main()
     for(int i = 0; i < k - 1; i++){
         for (int j = 0; j < k - 1; j++)
         {
-            z0++;
             if (vetor[j] > vetor[j + 1]){
                 int temp = vetor[j];
                 vetor[j] = vetor[j + 1];
                 vetor[j + 1] = temp;
-                z0++;
+                z0 = z0 + 4;
             }
+            z0 = z0 + 2;
         }
     }
     // Resetando o vetor
@@ -237,9 +239,10 @@ int main()
             while (j >= 0 && vetor[j] > key) {
                 vetor[j + 1] = vetor[j];
                 j--;
-                x2 ++;
+                x2 = x2 + 3;
             }
             vetor[j + 1] = key;
+            x2++;
         }
     }
     // Resetando o vetor
@@ -250,16 +253,16 @@ int main()
     // SELECTION SORT
     for (int i = 0; i < k - 1; i++){
         int keym = i;
-        y2 ++;
         for (int j = i + 1; j < k; j++){
             if (vetor[j] < vetor[keym]){
                 keym = j;
-                y2 ++;
+                y2 = y2 + 2;
             }
         }
         int temp = vetor[keym];
         vetor[keym] = vetor[i];
         vetor[i] = temp;
+        y2 = y2 + 4;
     }
     // Resetando o vetor
     for (int i = 0; i < n; i++) {
@@ -270,13 +273,13 @@ int main()
     for(int i = 0; i < k - 1; i++){
         for (int j = 0; j < k - 1; j++)
         {
-            z2++;
             if (vetor[j] > vetor[j + 1]){
                 int temp = vetor[j];
                 vetor[j] = vetor[j + 1];
                 vetor[j + 1] = temp;
-                z2++;
+                z2 = z2 + 4;
             }
+            z2 = z2 + 2;
         }
     }
 
