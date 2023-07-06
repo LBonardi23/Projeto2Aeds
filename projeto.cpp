@@ -3,14 +3,16 @@
 #include <ctime>
 #include <algorithm>
 
+// Nomes e RA: Leonardo Bonardi Marques Silva 2023.1.08.011 e Vinícuius Henrique Piotto 2023.1.08.024. Trabalho de AEDs I sobre métodos de ordenação, data máxima de entrega 07/06/2023. Professor Paulo Bressan.
+
 using namespace std;
 
-// função que retorna um valor booleano para criar o vetor de maneira decrescente
+// Função que retorna um valor booleano para criar o vetor de maneira decrescente
 bool comparaDecrescente(int a, int b) {
     return a > b;
 }
 
-// função que retorna valores booleanos para verificar se o numero aleatório gerado já existe no vetor
+// Função que retorna valores booleanos para verificar se o numero aleatório gerado já existe no vetor
 bool numeroJaGerado(int* vetor, int tamanho, int numero) {
     for (int i = 0; i < tamanho; i++) {
         if (vetor[i] == numero) {
@@ -22,47 +24,50 @@ bool numeroJaGerado(int* vetor, int tamanho, int numero) {
 
 int main()
 {
-    int k;
-    int n;
-    int opcaotam;
-    int x0 = 0;
-    int x1 = 0;
-    int x2 = 0;
-    int y0 = 0;
-    int y1 = 0;
-    int y2 = 0;
-    int z0 = 0;
-    int z1 = 0;
-    int z2 = 0;
-    srand(time(0));
+    int k;              //Variável para comparação entre os vetores.
+    int n;              //Variável para comparação entre os vetores.
+    int opcaotam;       //Variável para a opção de tamanho.
+    int x0 = 0;         //Variável de contagem para Insert.
+    int x1 = 0;         //Variável de contagem para Insert.
+    int x2 = 0;         //Variável de contagem para Insert.
+    int y0 = 0;         //Variável de contagem para Selection.
+    int y1 = 0;         //Variável de contagem para Selection.
+    int y2 = 0;         //Variável de contagem para Selection.
+    int z0 = 0;         //Variável de contagem para Bubble.
+    int z1 = 0;         //Variável de contagem para Bubble.
+    int z2 = 0;         //Variável de contagem para Bubble.
+    srand(time(0));     //Comando para que os números aleatórios gerados não se repitam.
 
+    //Cout's para a seleção do tamanho do vetor.
     cout << "Selecione um tamanho para o vetor: " << endl;
     cout << "1. 100 posições" << endl;
     cout << "2. 1000 posições" << endl;
     cout << "3. 100000 posições" << endl;
     cout << "Digite o numero da opção desejada: ";
+    //Cin para selecionar o tamanho do vetor.
     cin >> opcaotam;
 
+    //Switch para os tamanhos dos vetores.
     switch (opcaotam) {
-        case 1:
+        case 1:     //Opção para tamanho = 100.
             cout << "100 posições selecionado." << endl;
             n = 100;
             k = 100;
             break;
 
-        case 2:
+        case 2:     //Opção para tamanho = 1000.
             cout << "1000 posições selecionado." << endl;
             n = 1000;
             k = 1000;
             break;
 
-        case 3:
+        case 3:     //Opção para tamanho = 10000
             cout << "10000 posições selecionado." << endl;
             k = 10000;
             n = 10000;
             break;
 
-        default:
+        default:    //Opção caso nenhuma das alternativas sejam selecionadas, ocasinando em um erro.
             cout << "Tamanho invalido!" << endl;
             break;
     }
@@ -70,14 +75,14 @@ int main()
     
     // Gerando um vetor aleatório sem repetir números
     int vetor[n];
-    int vetorReset[n];
+    int vetorReset[n];      //Vetor secundário que será utilizado para resetar o vetor primário.
     for (int i = 0; i < n; i++) {
         int numero;
         do {
             numero = rand() % 1000000;
         } while (numeroJaGerado(vetor, i, numero));
 
-        vetor[i] = numero;
+        vetor[i] = numero;  //Setando os mesmos valores para ambos.
         vetorReset[i] = numero;
     }
     cout << endl;
@@ -282,14 +287,17 @@ int main()
             z2 = z2 + 2;
         }
     }
+    //Cout's finais após as contagens das ordenações.
 
     cout << "Dados gerados com sucesso: " << endl;
+
     cout << "INSERT SORT" << endl << "Na forma crescente: " << x0 << " repetições." << endl << "Na forma aleatória: " << x1 << " repetições." << endl << "Na forma decrescente: " << x2 << " repetições." << endl << endl;
 
-    cout << "SELECTION SORT" << endl << "Na forma crescente: " << y0 << " repetições." << endl << "Na forma aleatória: " << y1 << " repetições." << endl << "Na forma decrescente: " << y2 << " repetições." << endl << endl;
+    cout << "SELECTION SORT" << endl << "Na forma crescente: " << y1 << " repetições." << endl << "Na forma aleatória: " << y2 << " repetições." << endl << "Na forma decrescente: " << y0 << " repetições." << endl << endl;
 
     cout << "BUBBLE SORT" << endl << "Na forma crescente: " << z0 << " repetições." << endl << "Na forma aleatória: " << z1 << " repetições." << endl << "Na forma decrescente: " << z2 << " repetições." << endl << endl;
 
     cout << "Graficos gerados com sucesso!" << endl;
+    
     return 0;
 }
